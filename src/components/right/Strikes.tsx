@@ -11,7 +11,7 @@ const Strikes = ({ difficulty, strikes }: StrikesProps) => {
   ][difficulty];
 
   return (
-    <div className="absolute top-8 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur">
+    <div className="absolute top-8 left-8 px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur">
       <div className="text-center">
         <div className="text-sm text-white/70 font-semibold">STRIKES</div>
         <div className="flex space-x-2 justify-center">

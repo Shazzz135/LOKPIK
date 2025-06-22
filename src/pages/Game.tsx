@@ -20,15 +20,29 @@ const Game = () => {
     return saved ? parseInt(saved) : 0;
   })();
   
+  const getDigitCount = (difficulty: number) => {
+    return difficulty + 3; // Easy: 3, Medium: 4, Hard: 5
+  };
+
+  const getTargetRange = (difficulty: number) => {
+    const digitCount = getDigitCount(difficulty);
+    const min = Math.pow(10, digitCount - 1);
+    const max = Math.pow(10, digitCount) - 1;
+    return { min, max };
+  };
+
+  const digitCount = getDigitCount(difficulty);
+  const { min, max } = getTargetRange(difficulty);
+  
   const gradients = [
     "bg-gradient-to-b from-blue-950 to-blue-900", // Easy
     "bg-gradient-to-b from-orange-900 to-yellow-700", // Medium
     "bg-gradient-to-b from-rose-950 to-red-800" // Hard
   ];
 
-  const [numbers, setNumbers] = useState([0, 0, 0]);
+  const [numbers, setNumbers] = useState(() => new Array(digitCount).fill(0));
   const [targetNumber, setTargetNumber] = useState(() => 
-    Math.floor(Math.random() * 900) + 100
+    Math.floor(Math.random() * (max - min + 1)) + min
   );
   const [isFlashing, setIsFlashing] = useState(false);
   const [flashColor, setFlashColor] = useState('');
@@ -99,8 +113,9 @@ const Game = () => {
       
       // Reset after flash effect but before cooldown ends
       setTimeout(() => {
-        setTargetNumber(Math.floor(Math.random() * 900) + 100);
-        setNumbers([0, 0, 0]);
+        const { min, max } = getTargetRange(difficulty);
+        setTargetNumber(Math.floor(Math.random() * (max - min + 1)) + min);
+        setNumbers(new Array(digitCount).fill(0));
         setIsFlashing(false);
         setFlashColor('');
       }, 800);
@@ -162,7 +177,7 @@ const Game = () => {
         >
           ← Back
         </button>
-        <HintBoxes difficulty={difficulty} />
+        <HintBoxes difficulty={difficulty} digitCount={digitCount} />
       </div>
       
       {/* Vertical fading line */}
@@ -174,7 +189,7 @@ const Game = () => {
         <Score difficulty={difficulty} score={score} />
         <Strikes difficulty={difficulty} strikes={strikes} />
         
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mt-16">
           <LockBox 
             difficulty={difficulty}
             numbers={numbers}
@@ -182,14 +197,16 @@ const Game = () => {
             isFlashing={isFlashing}
             flashColor={flashColor}
           />
-          <SubmitButton
-            difficulty={difficulty}
-            targetNumber={targetNumber}
-            onSubmit={handleSubmit}
-            isDisabled={isSubmitDisabled}
-            cooldownTime={submitCooldown}
-            showGood={wasLastAnswerCorrect && isSubmitDisabled && submitCooldown > 0}
-          />
+          <div className="mt-6">
+            <SubmitButton
+              difficulty={difficulty}
+              targetNumber={targetNumber}
+              onSubmit={handleSubmit}
+              isDisabled={isSubmitDisabled}
+              cooldownTime={submitCooldown}
+              showGood={wasLastAnswerCorrect && isSubmitDisabled && submitCooldown > 0}
+            />
+          </div>
         </div>
       </div>
     </div>

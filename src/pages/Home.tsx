@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Chart from "../components/home/Chart";
 
 const difficulties = [
   { label: "Easy", value: 0 },
@@ -37,8 +38,10 @@ const Home = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center h-screen w-screen ${bgGradient} transition-colors duration-700`}
+      className={`flex flex-col items-center justify-center h-screen w-screen ${bgGradient} transition-colors duration-700 relative`}
     >
+      <Chart difficulty={difficulty} />
+      
       <span
         className={`text-7xl font-extrabold mb-8 bg-clip-text text-transparent leading-relaxed pt-2 ${textGradient} transition-colors duration-700`}
       >
