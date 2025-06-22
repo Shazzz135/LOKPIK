@@ -59,10 +59,10 @@ const Home = () => {
             {difficulties.map((d, idx) => (
               <span
                 key={d.value}
-                className={`px-4 py-1 rounded-xl transition-all duration-300 cursor-pointer select-none
+                className={`px-4 py-1 rounded-xl transition-all duration-300 cursor-pointer select-none hover:scale-105 hover:brightness-110
                   ${difficulty === idx
                     ? `${textGradient} font-bold bg-white/20 shadow-md`
-                    : "text-blue-200"}
+                    : "text-blue-200 hover:text-white hover:bg-white/10"}
                 `}
                 onClick={() => setDifficulty(idx)}
               >
@@ -72,7 +72,7 @@ const Home = () => {
           </div>
         </div>
         <button
-          className={`mt-4 px-12 py-5 text-4xl font-black tracking-widest rounded-2xl shadow-2xl hover:scale-110 hover:brightness-110 transition-transform transition-colors duration-300 ${buttonGradient} transition-colors duration-700`}
+          className={`mt-4 px-12 py-5 text-4xl font-black tracking-widest rounded-2xl shadow-2xl hover:scale-110 hover:brightness-110 hover:shadow-3xl active:scale-105 transition-all duration-300 ${buttonGradient}`}
           onClick={() => navigate("/game")}
         >
           LET'S PLAY

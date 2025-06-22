@@ -4,9 +4,10 @@ interface SubmitButtonProps {
   onSubmit: () => void;
   isDisabled?: boolean;
   cooldownTime?: number;
+  showGood?: boolean;
 }
 
-const SubmitButton = ({ difficulty, targetNumber, onSubmit, isDisabled = false, cooldownTime = 0 }: SubmitButtonProps) => {
+const SubmitButton = ({ difficulty, targetNumber, onSubmit, isDisabled = false, cooldownTime = 0, showGood = false }: SubmitButtonProps) => {
   const boxGradients = [
     "bg-gradient-to-br from-blue-950 via-blue-950 to-blue-900",
     "bg-gradient-to-br from-orange-950 via-orange-900 to-orange-800",
@@ -27,7 +28,7 @@ const SubmitButton = ({ difficulty, targetNumber, onSubmit, isDisabled = false, 
       onClick={onSubmit}
       disabled={isDisabled}
     >
-      {isDisabled && cooldownTime > 0 ? `Whoops ${cooldownTime}s` : `Submit: ${targetNumber}`}
+      {showGood ? 'Good!' : isDisabled && cooldownTime > 0 ? `Whoops ${cooldownTime}s` : `Submit: ${targetNumber}`}
     </button>
   );
 };

@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [
     react(), 
     tailwindcss(),
-  ], build: {
+  ], 
+  build: {
     outDir: "build",
-  }
+  },
+  assetsInclude: ['**/*.mp3', '**/*.wav', '**/*.ogg']
 })
