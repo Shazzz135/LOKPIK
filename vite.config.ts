@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
   ], 
   build: {
-    outDir: "build",
+    outDir: "dist",
   },
   assetsInclude: ['**/*.mp3', '**/*.wav', '**/*.ogg']
 })
