@@ -71,10 +71,10 @@ const Timer = ({ difficulty, startTimer, score }: TimerProps) => {
     return `${minutes}:${seconds.toString().padStart(2, '0')}.${ms.toString().padStart(2, '0')}`;
   };
   return (
-    <div className="absolute top-8 right-8 px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur">
+    <div className="px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur w-40">
       <div className="text-center">
         <div className="text-sm text-white/70 font-semibold">TIME</div>
-        <div className={`text-2xl font-mono font-bold ${timerColors} drop-shadow-lg`}>
+        <div className={`text-2xl font-mono font-bold ${timerColors} drop-shadow-lg text-center`}>
           {formatTime(timeLeft)}
         </div>
       </div>

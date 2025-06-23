@@ -91,7 +91,7 @@ const HintBoxes = ({ difficulty, digitCount, targetNumber }: HintBoxesProps) => 
           >
             <div className="text-center px-4">
               <div className="text-xs text-white/70 font-semibold mb-1">
-                HINT {index + 1} - DIGIT _
+                HINT {index + 1}
               </div>
               <div className="text-white/90 text-xs leading-tight">
                 {loading ? "Loading trivia..." : (fact?.fact || `Waiting for hint ${index + 1}...`)}

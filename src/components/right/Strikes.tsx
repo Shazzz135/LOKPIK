@@ -4,25 +4,17 @@ interface StrikesProps {
 }
 
 const Strikes = ({ difficulty, strikes }: StrikesProps) => {
-  const strikeColors = [
-    "text-blue-300",
-    "text-orange-300", 
-    "text-red-300"
-  ][difficulty];
-
   return (
-    <div className="absolute top-8 left-8 px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur">
+    <div className="px-6 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur w-40">
       <div className="text-center">
         <div className="text-sm text-white/70 font-semibold">STRIKES</div>
-        <div className="flex space-x-2 justify-center">
-          {[0, 1, 2].map((index) => (
+        <div className="text-2xl font-mono font-bold drop-shadow-lg flex justify-center space-x-6">
+          {Array.from({ length: 3 }, (_, i) => (
             <span
-              key={index}
-              className={`text-2xl font-bold drop-shadow-lg ${
-                index < strikes ? 'text-red-500' : 'text-gray-500'
-              }`}
+              key={i}
+              className={i < strikes ? 'text-red-500' : 'text-gray-400'}
             >
-              ✗
+              X
             </span>
           ))}
         </div>

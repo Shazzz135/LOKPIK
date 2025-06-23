@@ -5,8 +5,6 @@ interface ResultsState {
   difficulty: number;
   score: number;
   isWin: boolean; // true if time ran out, false if struck out
-  timeRemaining?: number;
-  saveHighScore?: boolean; // Add flag to control high score saving
 }
 
 const Results = () => {
@@ -58,11 +56,6 @@ const Results = () => {
     "bg-gradient-to-br from-rose-950 via-red-950 to-red-900",
   ];
 
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
   return (
     <div className={`flex flex-col items-center justify-center h-screen w-screen ${gradients[difficulty]} text-white relative`}>
       {/* High Score Display */}

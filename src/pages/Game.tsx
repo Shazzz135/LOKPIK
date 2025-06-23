@@ -185,9 +185,11 @@ const Game = () => {
       
       {/* Right side */}
       <div className="flex-1 flex items-center justify-center overflow-visible p-0 m-0 relative">
-        <Timer difficulty={difficulty} startTimer={!showPopup} score={score} />
-        <Score difficulty={difficulty} score={score} />
-        <Strikes difficulty={difficulty} strikes={strikes} />
+        <div className="absolute top-8 w-full flex justify-evenly items-center px-8">
+          <Strikes difficulty={difficulty} strikes={strikes} />
+          <Score difficulty={difficulty} score={score} />
+          <Timer difficulty={difficulty} startTimer={!showPopup} score={score} />
+        </div>
         
         <div className="flex flex-col items-center">
           <div className="mt-24">
@@ -202,7 +204,6 @@ const Game = () => {
           <div className="mt-8">
             <SubmitButton
               difficulty={difficulty}
-              targetNumber={targetNumber}
               onSubmit={handleSubmit}
               isDisabled={isSubmitDisabled}
               cooldownTime={submitCooldown}
