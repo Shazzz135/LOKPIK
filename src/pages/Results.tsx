@@ -20,8 +20,7 @@ const Results = () => {
   })();
   const score = state?.score ?? 0;
   const isWin = state?.isWin ?? false;
-  const saveHighScore = state?.saveHighScore ?? true; // Default to saving high scores
-  const timeRemaining = state?.timeRemaining ?? 0;
+
   // Save high score when component mounts
   useEffect(() => {
     const savedScores = localStorage.getItem('lockpick-highscores');

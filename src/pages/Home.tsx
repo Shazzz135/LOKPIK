@@ -75,7 +75,7 @@ const Home = () => {
           </div>
         </div>
         <button
-          className={`mt-4 px-12 py-5 text-4xl font-black tracking-widest rounded-2xl shadow-2xl hover:scale-110 hover:brightness-110 hover:shadow-3xl active:scale-105 transition-all duration-300 ${buttonGradient}`}
+          className={`mt-4 px-12 py-5 text-4xl font-black tracking-widest rounded-2xl shadow-2xl hover:scale-110 hover:brightness-110 hover:shadow-3xl active:scale-105 transition-all duration-300 ${buttonGradient} transition-colors duration-700`}
           onClick={() => navigate("/game")}
         >
           LET'S PLAY

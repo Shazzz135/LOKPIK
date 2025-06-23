@@ -177,7 +177,7 @@ const Game = () => {
         >
           ← Back
         </button>
-        <HintBoxes difficulty={difficulty} digitCount={digitCount} />
+        <HintBoxes difficulty={difficulty} digitCount={digitCount} targetNumber={targetNumber} />
       </div>
       
       {/* Vertical fading line */}
@@ -189,15 +189,17 @@ const Game = () => {
         <Score difficulty={difficulty} score={score} />
         <Strikes difficulty={difficulty} strikes={strikes} />
         
-        <div className="flex flex-col items-center mt-16">
-          <LockBox 
-            difficulty={difficulty}
-            numbers={numbers}
-            setNumbers={setNumbers}
-            isFlashing={isFlashing}
-            flashColor={flashColor}
-          />
-          <div className="mt-6">
+        <div className="flex flex-col items-center">
+          <div className="mt-24">
+            <LockBox 
+              difficulty={difficulty}
+              numbers={numbers}
+              setNumbers={setNumbers}
+              isFlashing={isFlashing}
+              flashColor={flashColor}
+            />
+          </div>
+          <div className="mt-8">
             <SubmitButton
               difficulty={difficulty}
               targetNumber={targetNumber}

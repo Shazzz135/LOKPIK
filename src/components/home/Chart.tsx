@@ -22,21 +22,6 @@ const Chart = ({ difficulty }: ChartProps) => {
     }
   }, []);
 
-  // Update high score for current difficulty
-  const updateHighScore = (difficultyLevel: number, newScore: number) => {
-    const updatedScores = [...highScores];
-    if (newScore > updatedScores[difficultyLevel]) {
-      updatedScores[difficultyLevel] = newScore;
-      setHighScores(updatedScores);
-      localStorage.setItem('lockpick-highscores', JSON.stringify(updatedScores));
-    }
-  };
-
-  // Expose updateHighScore function globally so Game can call it
-  useEffect(() => {
-    (window as any).updateHighScore = updateHighScore;
-  }, [highScores]);
-
   return (
     <div className="absolute top-8 right-8 px-6 py-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur">
       <div className="text-center">
