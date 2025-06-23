@@ -205,7 +205,7 @@ const Game = () => {
         </div>
         
         <div className="flex flex-col items-center">
-          <div className="mt-24">
+          <div className={`${difficulty === 0 ? 'mt-24' : difficulty === 1 ? 'mt-20' : 'mt-14'}`}>
             <LockBox 
               difficulty={difficulty}
               numbers={numbers}
@@ -214,7 +214,7 @@ const Game = () => {
               digitFeedback={digitFeedback}
             />
           </div>
-          <div className="mt-8">
+          <div className={`${difficulty === 0 ? 'mt-6' : difficulty === 1 ? 'mt-2' : '-mt-2'}`}>
             <SubmitButton
               difficulty={difficulty}
               onSubmit={handleSubmit}

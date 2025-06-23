@@ -51,7 +51,7 @@ const Creator = ({ difficulty }: { difficulty?: number }) => {
   ][currentDifficulty];
   return (
     <div
-      className={`${bgColor} rounded-xl px-6 py-3 shadow-lg border-4 ${borderColor} text-white text-lg font-semibold flex flex-col items-start text-left transition-colors duration-700`}
+      className={`${bgColor} rounded-xl px-6 py-3 shadow-lg border-4 ${borderColor} text-white text-lg font-semibold flex flex-col items-start text-left transition-colors duration-700 max-[400px]:px-3 max-[400px]:py-2 max-[400px]:text-sm max-[400px]:border-2 transform scale-65 origin-bottom-left`}
     >
       <span>
         Creator:{" "}

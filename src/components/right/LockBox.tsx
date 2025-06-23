@@ -30,8 +30,11 @@ const LockBox = ({ difficulty, numbers, setNumbers, isFlashing, digitFeedback }:
   const spacing = numbers.length <= 3 ? 'my-4' : numbers.length === 4 ? 'my-3' : 'my-2';
   const fontSize = numbers.length <= 3 ? 'text-6xl' : numbers.length === 4 ? 'text-5xl' : 'text-4xl';
 
+  // Scale based on difficulty
+  const scaleClass = difficulty === 0 ? 'scale-100' : difficulty === 1 ? 'scale-90' : 'scale-85';
+
   return (
-    <div className={`w-72 ${boxHeight} rounded-2xl flex items-center justify-center shadow-2xl border-4 border-white/20 backdrop-blur-md overflow-hidden ${boxGradients[difficulty]} relative`}>
+    <div className={`w-72 ${boxHeight} rounded-2xl flex items-center justify-center shadow-2xl border-4 border-white/20 backdrop-blur-md overflow-hidden ${boxGradients[difficulty]} relative transform ${scaleClass} origin-center`}>
       <div className="flex flex-col w-full h-full items-center justify-center relative z-20">
         {numbers.map((num, idx) => (
           <div key={idx} className={`flex items-center ${spacing}`}>
