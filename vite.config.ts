@@ -8,8 +8,8 @@ export default defineConfig({
     react(), 
     tailwindcss(),
   ], 
-  build: {
-    outDir: "dist",
+ build: {
+    outDir: 'build',
   },
   assetsInclude: ['**/*.mp3', '**/*.wav', '**/*.ogg']
 })
