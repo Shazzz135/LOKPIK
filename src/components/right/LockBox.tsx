@@ -48,7 +48,7 @@ const LockBox = ({ difficulty, numbers, setNumbers, isFlashing, digitFeedback }:
                   digitFeedback[idx] === 'correct' ? 'bg-green-500/60' : 'bg-red-500/60'
                 }`} />
               )}
-              <div className="text-6xl font-mono font-black text-white/90 transform scale-90 border-2 border-white/30 rounded-lg px-4 py-2 relative z-20 overflow-hidden">
+              <div className="text-5xl font-mono font-black text-white/90 transform scale-90 border-2 border-white/30 rounded-lg px-4 py-2 relative z-20 overflow-hidden">
                 {numbers[idx]}
               </div>
             </div>
