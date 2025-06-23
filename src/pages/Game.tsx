@@ -46,6 +46,7 @@ const Game = () => {
   );
   const [isFlashing, setIsFlashing] = useState(false);
   const [flashColor, setFlashColor] = useState('');
+  const [digitFeedback, setDigitFeedback] = useState<('correct' | 'incorrect' | 'none')[]>(() => new Array(digitCount).fill('none'));
   const [showPopup, setShowPopup] = useState(true);
   const [score, setScore] = useState(0);
   const [strikes, setStrikes] = useState(0);
@@ -101,6 +102,14 @@ const Game = () => {
     if (isSubmitDisabled) return;
     
     const enteredNumber = parseInt(numbers.join(''));
+    const targetDigits = targetNumber.toString().split('').map(Number);
+    
+    // Calculate feedback for each digit
+    const feedback = numbers.map((digit, index) => 
+      digit === targetDigits[index] ? 'correct' : 'incorrect'
+    ) as ('correct' | 'incorrect' | 'none')[];
+    
+    setDigitFeedback(feedback);
     setIsSubmitDisabled(true);
     setSubmitCooldown(3);
     
@@ -108,7 +117,6 @@ const Game = () => {
       setWasLastAnswerCorrect(true);
       playCorrectSound();
       setScore(score + 1);
-      setFlashColor('bg-green-500/80');
       setIsFlashing(true);
       
       // Reset after flash effect but before cooldown ends
@@ -117,7 +125,7 @@ const Game = () => {
         setTargetNumber(Math.floor(Math.random() * (max - min + 1)) + min);
         setNumbers(new Array(digitCount).fill(0));
         setIsFlashing(false);
-        setFlashColor('');
+        setDigitFeedback(new Array(digitCount).fill('none'));
       }, 800);
     } else {
       setWasLastAnswerCorrect(false);
@@ -126,22 +134,27 @@ const Game = () => {
       setStrikes(newStrikes);
       
       if (newStrikes >= 3) {
-        navigate('/results', { 
-          state: { 
-            difficulty, 
-            score, 
-            isWin: false 
-          } 
-        });
+        setFlashColor('bg-red-500/80');
+        setIsFlashing(true);
+        
+        // 1.5-second delay before going to results
+        setTimeout(() => {
+          navigate('/results', { 
+            state: { 
+              difficulty, 
+              score, 
+              isWin: false 
+            } 
+          });
+        }, 1500);
         return;
       } else {
-        setFlashColor('bg-red-500/80');
         setIsFlashing(true);
         
         // Clear flash effect after 800ms but keep cooldown
         setTimeout(() => {
           setIsFlashing(false);
-          setFlashColor('');
+          setDigitFeedback(new Array(digitCount).fill('none'));
         }, 800);
       }
     }
@@ -198,7 +211,7 @@ const Game = () => {
               numbers={numbers}
               setNumbers={setNumbers}
               isFlashing={isFlashing}
-              flashColor={flashColor}
+              digitFeedback={digitFeedback}
             />
           </div>
           <div className="mt-8">
