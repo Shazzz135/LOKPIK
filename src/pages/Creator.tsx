@@ -51,7 +51,7 @@ const Creator = ({ difficulty }: { difficulty?: number }) => {
   ][currentDifficulty];
   return (
     <div
-      className={`${bgColor} rounded-xl px-6 py-3 shadow-lg border-4 ${borderColor} text-white text-lg font-semibold flex flex-col items-start transition-colors duration-700`}
+      className={`${bgColor} rounded-xl px-6 py-3 shadow-lg border-4 ${borderColor} text-white text-lg font-semibold flex flex-col items-start text-left transition-colors duration-700`}
     >
       <span>
         Creator:{" "}
@@ -64,8 +64,9 @@ const Creator = ({ difficulty }: { difficulty?: number }) => {
           Shazzz
         </a>
       </span>
-      <span className="text-xs text-white/70 mt-1">
-        Make: Vite + React + Tailwind
+      <span className="text-xs text-white/70 mt-1 text-left">
+        Front: Vite + React + Tailwind <br />
+        Back: Python using 'NumberTriviaAPI'
       </span>
     </div>
   );
